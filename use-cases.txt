@@ -1,0 +1,35 @@
+1. (1,0) Organização do código e usabilidade do sistema quanto ao exercício
+proposto. // Discutível
+
+2. (1,0) Cadastro de usuário na plataforma // OK
+
+3. (2,0) Autenticação - Rotas de Criação / Update / Delete; Utilizando algum
+TOKEN / JWT / Builtin no caso de frameworks no cabeçalho das requisições. // OK
+a. (1,0) Verificação do email/senha e geração do token 
+b. (1,0) Proteção das rotas 
+
+
+4. (2,0) Create - Criar um recurso a partir de uma requisição do tipo POST
+enviado os dados por JSON // OK
+a. (1,0) Recurso Principal 
+b. (1,0) Recursos associados 1:N
+
+
+5. (2,0) Read - Listar recursos através do método GET // OK
+a. (1,0) Listar todos - sem detalhes 1:N
+b. (1,0) Listar pelo ID com detalhes 1:N, retornando erro caso o ID não
+exista
+
+
+6. (1,0) Update - Atualizar um recurso através do ID com o método PUT,
+retornando o novo elemento, erro caso o ID não exista // OK
+a. (0,5) - Recurso principal Utilizar o cascade para remover
+automaticamente as relações.
+b. (0,5) - Recurso associado
+
+
+7. (1,0) DELETE - Deletar um recurso pelo ID através do método DELETE
+retornando uma resposta vazia. Erro caso o ID não exista; // OK
+a. (0,5) - Recurso principal Utilizar o cascade para remover
+automaticamente as relações.
+b. (0,5) - Recurso associado
