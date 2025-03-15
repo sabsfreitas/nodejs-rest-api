@@ -14,7 +14,7 @@ API REST para gerenciamento de receitas, permitindo cadastro, listagem, edição
 ## 📦 Instalação  
 Clone o repositório e instale as dependências:  
 ```bash
-git clone https://github.com/usuario/nodejs-rest-api.git
+git clone https://github.com/sabsfreitas/nodejs-rest-api.git
 cd nodejs-rest-api
 npm install
 ```
