@@ -12,33 +12,36 @@ class UsuariosController {
 
     async create(req, res) {
         const { nome, email, senha } = req.body;
-
-        if(nome !== '' && email !== '' && senha !== '') {
-
-        const checaUsuario = await Usuario.findOne({
-            where: {
-                email
-            }
-        });
-
-        if(!checaUsuario) {
-            const usuarioBody = req.body;
-            const senha = await bcrypt.hash(usuarioBody.senha, 10);
-            const user =  {
-                nome: usuarioBody.nome,
-                email: usuarioBody.email,
-                senha     
-            }  
-            const userToDB = await Usuario.create(user);
-            return res.status(201).json(userToDB);
-        } else {
-            return res.status(400).json({ msg: "Esse e-mail já está cadastrado no sistema"});
+    
+        if (!nome || !email || !senha || nome.trim() === '' || email.trim() === '' || senha.trim() === '') {
+            return res.status(400).json({ msg: "Todos os campos são obrigatórios." });
         }
-
-    } else {
-        return res.status(400).json({ msg: "Algum campo está em branco."});
-    }
-}
+    
+        try {
+            const checaUsuario = await Usuario.findOne({
+                where: {
+                    email
+                }
+            });
+    
+            if (checaUsuario) {
+                return res.status(400).json({ msg: "Esse e-mail já está cadastrado no sistema" });
+            }
+    
+            const senhaCripto = await bcrypt.hash(senha, 10);
+            const userToDB = await Usuario.create({
+                nome: nome.trim(),
+                email: email.trim(),
+                senha: senhaCripto
+            });
+    
+            return res.status(201).json(userToDB);
+    
+        } catch (error) {
+            console.error("Erro ao criar usuário:", error);
+            return res.status(500).json({ msg: "Erro interno do servidor" });
+        }
+    }    
 
     async auth(req, res) {
         const { email, senha } = req.body;

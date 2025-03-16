@@ -23,7 +23,6 @@ npm install
 Crie um arquivo `.env` na raiz do projeto e adicione as variáveis de ambiente necessárias:  
 ```env
 DATABASE_URL=postgres://usuario:senha@localhost:5432/nomedobanco
-JWT_SECRET=seu_segredo_jwt
 PORT=3000
 ```
 
@@ -38,10 +37,10 @@ npm run dev
 ### 🛠 Autenticação e Usuários  
 ```http
 POST /usuarios  # Cadastro de usuários
-POST /auth  # Autenticação/Login
-GET /list  # Listagem de usuários
-PUT /updateAccount  # Atualização de dados do usuário
-DELETE /deleteAccount  # Exclusão de conta
+POST /usuarios/auth  # Autenticação/Login
+GET /usuarios/list  # Listagem de usuários
+PUT /usuarios/updateAccount  # Atualização de dados do usuário
+DELETE /usuarios/deleteAccount  # Exclusão de conta
 ```
 
 #### 🔹 Exemplo de requisição - Criar Usuário  
